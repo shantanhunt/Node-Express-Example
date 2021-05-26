@@ -10,43 +10,57 @@ const app = express();
 
 const dishRouter = require('./routes/dishRouter');
 
+
+// To Connect to MongoDB Server
+const mongoose = require('mongoose');
+
+// const Dishes = require('./models/dishes');
+
+const url = 'mongodb://localhost:27017/confusion';
+const connect = mongoose.connect(url);
+
+connect.then((db) => {
+    console.log("Connected correctly to server");
+}, (err) => { console.log(err); });
+
+// REST API Router methods
 app.use('/dishes', dishRouter);
 
 app.use(morgan('dev'));
 
 app.use(bodyParser.json());
 
-app.all('/dishes', (req,res,next) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  next();
-});
+// app.all('/dishes', (req,res,next) => {
+//   res.statusCode = 200;
+//   res.setHeader('Content-Type', 'text/plain');
+//   next();
+// });
 
-app.get('/dishes', (req,res,next) => {
-    res.end('Will send all the dishes to you!');
-});
+// app.get('/dishes', (req,res,next) => {
+//     res.end('Will send all the dishes to you!');
+// });
 
-app.post('/dishes', (req, res, next) => {
- res.end('Will add the dish: ' + req.body.name + ' with details: ' + req.body.description);
-});
+// app.post('/dishes', (req, res, next) => {
+//  res.end('Will add the dish: ' + req.body.name + ' with details: ' + req.body.description);
+// });
 
-app.put('/dishes', (req, res, next) => {
-  res.statusCode = 403;
-  res.end('PUT operation not supported on /dishes');
-});
+// app.put('/dishes', (req, res, next) => {
+//   res.statusCode = 403;
+//   res.end('PUT operation not supported on /dishes');
+// });
  
-app.delete('/dishes', (req, res, next) => {
-    res.end('Deleting all dishes');
-});
+// app.delete('/dishes', (req, res, next) => {
+//     res.end('Deleting all dishes');
+// });
 
-app.get('/dishes/:dishId', (req,res,next) => {
-    res.end('Will send details of the dish: ' + req.params.dishId +' to you!');
-});
+// app.get('/dishes/:dishId', (req,res,next) => {
+//     res.end('Will send details of the dish: ' + req.params.dishId +' to you!');
+// });
 
-app.post('/dishes/:dishId', (req, res, next) => {
-  res.statusCode = 403;
-  res.end('POST operation not supported on /dishes/'+ req.params.dishId);
-});
+// app.post('/dishes/:dishId', (req, res, next) => {
+//   res.statusCode = 403;
+//   res.end('POST operation not supported on /dishes/'+ req.params.dishId);
+// });
 
 const server = http.createServer(app);
 

@@ -16,6 +16,7 @@
 
 ## Resources
 - [Express](http://expressjs.com/)
+- [Error Handling in Express](http://expressjs.com/tr/guide/error-handling.html)
 - [Connect](https://github.com/senchalabs/connect)
 - [Express Wiki](https://github.com/expressjs/express/wiki)
 - [Morgan](https://github.com/expressjs/morgan)
