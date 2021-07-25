@@ -12,7 +12,10 @@
 
 ## Server Endpoint
 
-`http://localhost:3000/`
+`http://localhost:3000/dishes`
+
+## Note
+- Make sure that you have created a MongoDB database and that the MongoDB server is running so that you can interact with it using Postman. 
 
 ## Resources
 - [Express](http://expressjs.com/)
